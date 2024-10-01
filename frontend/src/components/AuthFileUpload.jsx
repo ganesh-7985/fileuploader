@@ -16,7 +16,7 @@ const AuthFileUpload = () => {
     e.preventDefault();
     try {
       const endpoint = isLogin ? 'login' : 'register';
-      const res = await axios.post(`http://localhost:5050/api/auth/${endpoint}`, { email, password });
+      const res = await axios.post(`https://fileuploader-82dq.onrender.com/api/auth/${endpoint}`, { email, password });
       localStorage.setItem('token', res.data.token);
       setIsAuthenticated(true);
       alert(`Successfully ${isLogin ? 'logged in' : 'registered'}!`);
@@ -51,7 +51,7 @@ const AuthFileUpload = () => {
     formData.append('file', file);
 
     try {
-      const res = await axios.post('http://localhost:5050/api/files/upload', formData);
+      const res = await axios.post('https://fileuploader-82dq.onrender.com/api/files/upload', formData);
       setUploadedFile(res.data);
       alert('File uploaded successfully!');
     } catch (error) {
